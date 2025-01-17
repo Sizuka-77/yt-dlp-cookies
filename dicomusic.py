@@ -23,6 +23,7 @@ ytdl_format_options = {
     'quiet': True,
     'no_warnings': True,
     'default_search': 'auto',
+    'cookies_from_browser': 'chrome',  # 이 부분을 추가!
 }
 
 ffmpeg_options = {
