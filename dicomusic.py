@@ -23,8 +23,7 @@ ytdl_format_options = {
     'quiet': True,
     'no_warnings': True,
     'default_search': 'auto',
-    'cookies_from_browser': 'chrome',  # 이 부분을 추가!
-    'cookies': '/path/to/cookies.txt',  # 쿠키 파일 경로를 추가
+    'cookies': os.environ.get('YT_COOKIE_FILE'),  # 환경 변수에서 쿠키를 읽어옵니다.
 }
 
 ffmpeg_options = {
