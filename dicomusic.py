@@ -39,6 +39,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
     @classmethod
     async def from_url(cls, url, *, loop, stream=False):
+        ydl_opts = ytdl_format_options.copy()
+        ydl_opts['cookiefile'] = 'cookies.txt'  # 쿠키 파일 경로 추가
+        
         ydl = youtube_dl.YoutubeDL(ytdl_format_options)
         info = ydl.extract_info(url, download=False)
         url2 = info['url']
