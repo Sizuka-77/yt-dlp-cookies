@@ -11,6 +11,9 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
+# 환경 변수에서 쿠키 파일 경로를 가져옴
+cookies_file = os.environ.get('YT_COOKIE_FILE')
+
 # YTDL options
 ytdl_format_options = {
     'format': 'bestaudio/best',
@@ -23,8 +26,14 @@ ytdl_format_options = {
     'quiet': True,
     'no_warnings': True,
     'default_search': 'auto',
-    'cookies': os.environ.get('YT_COOKIE_FILE'),  # 환경 변수에서 쿠키를 읽어옵니다.
+    'cookies': cookies_file,  # 환경 변수에서 쿠키 파일 경로를 가져옴
 }
+
+# 쿠키 파일 경로가 제대로 설정되었는지 확인
+if cookies_file:
+    print(f"Cookies file path: {cookies_file}")
+else:
+    print("No cookies file path set in environment variables.")
 
 ffmpeg_options = {
     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
