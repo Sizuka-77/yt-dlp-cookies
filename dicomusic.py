@@ -24,6 +24,7 @@ ytdl_format_options = {
     'no_warnings': True,
     'default_search': 'auto',
     'cookies_from_browser': 'chrome',  # 이 부분을 추가!
+    'cookies': '/path/to/cookies.txt',  # 쿠키 파일 경로를 추가
 }
 
 ffmpeg_options = {
@@ -41,7 +42,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     async def from_url(cls, url, *, loop, stream=False):
         ydl_opts = ytdl_format_options.copy()
         ydl_opts['cookiefile'] = 'cookies.txt'  # 쿠키 파일 경로 추가
-        
+
         ydl = youtube_dl.YoutubeDL(ytdl_format_options)
         info = ydl.extract_info(url, download=False)
         url2 = info['url']
