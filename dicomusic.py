@@ -26,7 +26,7 @@ ytdl_format_options = {
     'quiet': True,
     'no_warnings': True,
     'default_search': 'auto',
-    'cookies': cookies_file,  # 환경 변수에서 쿠키 파일 경로를 가져옴
+    'cookies': '/tmp/cookies.txt',  # 쿠키 파일 경로 설정
 }
 
 # 쿠키 파일 경로가 제대로 설정되었는지 확인
